@@ -26,3 +26,5 @@
     lunanode_token: "{{ lunanode_token }}"
     keyword: "master"
   register: result
+#- debug: var=result
+

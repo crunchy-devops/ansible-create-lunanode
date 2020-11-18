@@ -80,6 +80,7 @@ def lunanode_get_cluster_present(data):
     val= results.get('vms')
     user_dic= {}
     user_pass={}
+    user = None
     for i in range(0, len(val)):
         flag = 0
         for key, value in val[i].items():
@@ -154,7 +155,7 @@ def main():
     if not is_error:
         module.exit_json(changed=has_changed, meta=result)
     else:
-        module.fail_json(msg="Error deleting repo", meta=result)
+        module.fail_json(msg="VM doesn't exist", meta=result)
 
 
 if __name__ == '__main__':

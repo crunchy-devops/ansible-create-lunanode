@@ -144,7 +144,7 @@ def main():
     }
 
     choice_map = {
-        "present": lunanode_get_cluster_present,
+        "present": lunanode_set_shelve_present()
 
     }
 
