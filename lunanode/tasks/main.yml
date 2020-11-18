@@ -1,0 +1,28 @@
+---
+# tasks file for lunanode
+#- name: Set up lunanode vm
+#  lunanode_vm:
+#    lunanode_key: "{{ lunanode_key }}"
+#    lunanode_token: "{{ lunanode_token }}"
+#    hostname: "{{ item }}"
+#    plan_id: 4
+#    region: "roubaix"
+#    image_id: 148540
+#    storage: 70
+#    state: present
+#  loop:
+#    - k8s-black-master
+#    - k8s-black-node1
+#    - k8s-black-node2
+#  ignore_errors: yes
+#  register: result
+#- name: sleep 240 seconds and continue with play
+#  wait_for:
+#    timeout: 240
+#  delegate_to: localhost
+- name: get lunanode vm
+  lunanode_get_cluster:
+    lunanode_key: "{{ lunanode_key }}"
+    lunanode_token: "{{ lunanode_token }}"
+    keyword: "master"
+  register: result
