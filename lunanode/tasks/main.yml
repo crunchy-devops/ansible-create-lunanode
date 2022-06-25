@@ -1,30 +1,94 @@
 ---
-# tasks file for lunanode
-#- name: Set up lunanode vm
-#  lunanode_vm:
-#    lunanode_key: "{{ lunanode_key }}"
-#    lunanode_token: "{{ lunanode_token }}"
-#    hostname: "{{ item }}"
-#    plan_id: 4
-#    region: "roubaix"
-#    image_id: 148540
-#    storage: 70
-#    state: present
-#  loop:
-#    - k8s-black-master
-#    - k8s-black-node1
-#    - k8s-black-node2
-#  ignore_errors: yes
-#  register: result
+#tasks file for lunanode
+- name: Set up lunanode vm
+  lunanode_vm:
+    lunanode_key: "{{ lunanode_key }}"
+    lunanode_token: "{{ lunanode_token }}"
+    hostname: "{{ item }}"
+    plan_id: 3
+    region: "roubaix"
+    image_id: 552096
+    storage: 70
+    state: present
+  loop:
+    - ansible-remote1
+    - ansible-remote2
+    - ansible-remote3
+    - ansible-remote4
+    - ansible-remote5
+    - ansible-remote6
+    - ansible-remote7
+    - ansible-remote8
+    - ansible-remote9
+    - ansible-remote10
+    - ansible-remote11
+    - ansible-remote12
+    - ansible-remote13
+    - ansible-remote14
+    - ansible-remote15
+    - ansible-remote16
+    - ansible-remote17
+  ignore_errors: yes
+  register: result
+  tags:
+    - remote
+- name: Set up lunanode vm
+  lunanode_vm:
+    lunanode_key: "{{ lunanode_key }}"
+    lunanode_token: "{{ lunanode_token }}"
+    hostname: "{{ item }}"
+    plan_id: 3
+    region: "roubaix"
+    image_id: 148508
+    storage: 70
+    state: present
+  loop:
+    - ansible-centos1
+  ignore_errors: yes
+  register: result
+  tags:
+    - centos
+- name: Set up lunanode vm
+  lunanode_vm:
+    lunanode_key: "{{ lunanode_key }}"
+    lunanode_token: "{{ lunanode_token }}"
+    hostname: "{{ item }}"
+    plan_id: 90
+    region: "toronto"
+    image_id: 552069
+    storage: 125
+    state: present
+  loop:
+    - jenkins-student1
+    - jenkins-student2
+    - jenkins-student3
+    - jenkins-student4
+    - jenkins-student5
+    - jenkins-student6
+    - jenkins-student7
+    - jenkins-student8
+    - jenkins-student9
+    - jenkins-student10
+    - jenkins-student11
+    - jenkins-student12
+    - jenkins-student13
+    - jenkins-student14
+    - jenkins-student15
+    - jenkins-student16
+    - jenkins-student17
+  ignore_errors: yes
+  register: result
+  tags:
+    - jenkins
 #- name: sleep 240 seconds and continue with play
 #  wait_for:
 #    timeout: 240
 #  delegate_to: localhost
-- name: get lunanode vm
-  lunanode_get_cluster:
-    lunanode_key: "{{ lunanode_key }}"
-    lunanode_token: "{{ lunanode_token }}"
-    keyword: "master"
-  register: result
+#- name: get lunanode vm
+#  lunanode_get_cluster:
+#    lunanode_key: "{{ lunanode_key }}"
+#    lunanode_token: "{{ lunanode_token }}"
+#    keyword: "master"
+#  register: result
 #- debug: var=result
 
